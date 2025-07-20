@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PPS Evaluation</title>
+</head>
+<body>
+    <h2>แบบประเมินระดับผู้ป่วย (PPS)</h2>
+    <form method="POST" action="/submit">
+        <label>ชื่อผู้ป่วย: <input name="patient_name" required></label><br>
+        <label>HN: <input name="hn"></label><br>
+        <label>หอผู้ป่วย: <input name="ward"></label><br><br>
+
+        <label>Ambulation (0–10): <input type="number" name="ambulation" min="0" max="10" required></label><br>
+        <label>Activity & Evidence (0–10): <input type="number" name="activity" min="0" max="10" required></label><br>
+        <label>Self-care (0–10): <input type="number" name="selfcare" min="0" max="10" required></label><br>
+        <label>Intake (0–10): <input type="number" name="intake" min="0" max="10" required></label><br>
+        <label>Conscious level (0–10): <input type="number" name="conscious" min="0" max="10" required></label><br><br>
+
+        <button type="submit">ประเมินผล</button>
+    </form>
+</body>
+</html>
