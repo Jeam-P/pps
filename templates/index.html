@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PPS Evaluation Form</title>
+</head>
+<body>
+    <h2>แบบประเมินระดับผู้ป่วย (Palliative Performance Scale - PPS)</h2>
+    <form method="POST" action="/submit">
+        <h4>ข้อมูลผู้ป่วย</h4>
+        <label>ชื่อผู้ป่วย: <input type="text" name="patient_name" required></label><br>
+        <label>HN: <input type="text" name="hn"></label><br>
+        <label>หอผู้ป่วย: <input type="text" name="ward"></label><br><br>
+
+        <h4>การประเมิน (0–10)</h4>
+        <label>Ambulation: <input type="number" name="ambulation" min="0" max="10" required></label><br>
+        <label>Activity & Evidence of Disease: <input type="number" name="activity" min="0" max="10" required></label><br>
+        <label>Self-Care: <input type="number" name="selfcare" min="0" max="10" required></label><br>
+        <label>Intake: <input type="number" name="intake" min="0" max="10" required></label><br>
+        <label>Conscious Level: <input type="number" name="conscious" min="0" max="10" required></label><br><br>
+
+        <button type="submit">ส่งแบบประเมิน</button>
+    </form>
+</body>
+</html>
