@@ -1,13 +1,16 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 import gspread
+import os
+import json
 from oauth2client.service_account import ServiceAccountCredentials
 from pps_utils import calculate_pps_score, get_guideline
 
 app = Flask(__name__)
 
-# เชื่อม Google Sheets
+# ใช้ GOOGLE_CREDENTIALS_JSON จาก environment variable
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+creds_dict = json.loads(os.environ['GOOGLE_CREDENTIALS_JSON'])
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 gc = gspread.authorize(credentials)
 
 SHEET_ID = "1zQZhcjjX9SbKwJDicF-FDWqAeZkBkfyWF-Xb0R_LnXU"
@@ -30,4 +33,5 @@ def submit():
     return render_template("result.html", score=score, guideline=guideline)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=False, host="0.0.0.0", port=port)
